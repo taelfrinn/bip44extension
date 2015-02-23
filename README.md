@@ -225,6 +225,8 @@ In the case of a sub-signing key packet, additionally
 * encrypting subkey @ m/44h/0h/45h/6h/0h = Kzt9SMacQg4JneVnpaBWidogNJ6efy6gnXQYWN5iqcZrX6J6tGWd 
 * signing subkey @ m/44h/0h/45h/6h/1h = L5Lv3SP3XGgDVsvUWfnXbgHUPYT34UhPVbP497fKERdwHEYBN2gk
 
+
+```
     -----BEGIN PGP PUBLIC KEY BLOCK-----
     
     mE8ESVwHgBMFK4EEAAoCAwRkZIqXqA5M0+ga0cy7c95jiANy+vuAmeLWNd/VEYUa2zpq7BDBknG8
@@ -243,4 +245,5 @@ In the case of a sub-signing key packet, additionally
     =n8Zs
     -----END PGP PUBLIC KEY BLOCK-----
 
+```
 
