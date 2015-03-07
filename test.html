@@ -46,7 +46,7 @@
 			</div>
 		  </div>
 		  <div class="row" id="form_help" style="visibility:hidden;">
-			  <span id="form_help_text"><p>If you enter a long enough password here the generate button will 
+			  <span id="form_help_text">If you enter a long enough password here the generate button will 
 			  output a gpg private key instead of only the public key part. This takes much longer as the
 			  gpg key must be s2k encrypted with the password you choose. This page wont accept less than 75
 			  bytes of entropy in an s2k password.</span>
@@ -170,7 +170,7 @@ function show_mnem_help()
 	var s2kph_hel = document.getElementById("form_help");
 	s2kph_hel.style.visibility="visible";
 	var s2kph_hel_con = document.getElementById("form_help_text");
-	s2kph_hel_con.innerHTML="<p>Please enter a valid bip39 mnemonic. This page does not generate them randomly; if you wish to create a new mnemonic, please use a wallet you trust.";
+	s2kph_hel_con.innerHTML="Please enter a valid bip39 mnemonic. This page does not generate them randomly; if you wish to create a new mnemonic, please use a wallet you trust.";
 }
 function hide_mnem_help()
 {
@@ -182,7 +182,7 @@ function show_acct_help()
 	var s2kph_hel = document.getElementById("form_help");
 	s2kph_hel.style.visibility="visible";
 	var s2kph_hel_con = document.getElementById("form_help_text");
-	s2kph_hel_con.innerHTML="<p>BIP44 structured wallets support multiple accounts. Each account will have a different GPG identity.";
+	s2kph_hel_con.innerHTML="BIP44 structured wallets support multiple accounts. Each account will have a different GPG identity.";
 }
 function hide_acct_help()
 {
@@ -194,7 +194,7 @@ function show_mnempass_help()
 	var s2kph_hel = document.getElementById("form_help");
 	s2kph_hel.style.visibility="visible";
 	var s2kph_hel_con = document.getElementById("form_help_text");
-	s2kph_hel_con.innerHTML="<p>Some bip39 wallets support the BIP39 plausible deniability passphrase. It affects the wallet identity and produces different results. There are no restricitons on length or content.";
+	s2kph_hel_con.innerHTML="Some bip39 wallets support the BIP39 plausible deniability passphrase. It affects the wallet identity and produces different results. There are no restricitons on length or content.";
 }
 function hide_mnempass_help()
 {
@@ -207,7 +207,7 @@ function show_s2k_help()
 	//s2kph_hel.style.display="block";
 	s2kph_hel.style.visibility="visible";
 	var s2kph_hel_con = document.getElementById("form_help_text");
-	s2kph_hel_con.innerHTML="<p>If you enter a long enough password here the generate button will output a gpg private key instead of only the public key part. This takes much longer as the gpg key must be s2k encrypted with the password you choose. This page wont accept less than 75 bytes of entropy in an s2k password.";
+	s2kph_hel_con.innerHTML="If you enter a long enough password here the generate button will output a gpg private key instead of only the public key part. This takes much longer as the gpg key must be s2k encrypted with the password you choose. This page wont accept less than 75 bytes of entropy in an s2k password.";
 }
 function hide_s2k_help()
 {
