@@ -1,0 +1,47 @@
+{
+  "name": "bip44gpg",
+  "version": "0.0.1",
+  "description": "Bitcoin GPG bip44 extension",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter list test/*.js",
+    "compile": 
+		"browserify -r crypto -r bitcoinjs-lib -r bip39 > bip44gpg.libs.js ; browserify -x bitcoinjs-lib -x bip39 -x crypto index.js -s bip44gpg > bip44gpg.js" 
+  },
+  "author": "Anon",
+  "contributors": [
+    {
+      "name": "jonas",
+      "email": "jonas@example.com",
+      "url": "https://example.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nonyet"
+  },
+  "license": "LOL",
+  "dependencies": {
+    "bip39": "^2.1.0",
+    "bitcoinjs-lib": "^1.0.0",
+    "pbkdf2-compat": "^2.0.1"
+  },
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
+  },
+  "testling": {
+    "browsers": [
+      "android-browser/4.2..latest",
+      "chrome/20..latest",
+      "firefox/21..latest",
+      "ipad/6..latest",
+      "iphone/6..latest",
+      "opera/15..latest",
+      "safari/latest"
+    ],
+    "harness": "mocha-bdd",
+    "files": "test/*.js"
+  }
+}
