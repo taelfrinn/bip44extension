@@ -126,7 +126,8 @@ To replace entropy in ECDSA signatures, RFC6979 deterministic signatures will be
 public portion of the keys, no external entropy is used besides what comes from the HD wallet itself. 
 When exporting s2k protected private keys, external entropy may be used, as the s2k portion
 of the secret key does not need to be invariant - as it does not affect the key ID, nor do signatures
-of the keys depend on the secret s2k protected portions.
+of the keys depend on the secret s2k protected portions. Signatures must use the smallest possible S value,
+which should always be less than half the curve order.
 
 When exporting only public keys, the first seven packets of output in order will be:
 
@@ -225,8 +226,7 @@ In the case of a sub-signing key packet, additionally
 * encrypting subkey @ m/44h/0h/45h/6h/0h = Kzt9SMacQg4JneVnpaBWidogNJ6efy6gnXQYWN5iqcZrX6J6tGWd 
 * signing subkey @ m/44h/0h/45h/6h/1h = L5Lv3SP3XGgDVsvUWfnXbgHUPYT34UhPVbP497fKERdwHEYBN2gk
 
-
-```
+````
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mE8ESVwHgBMFK4EEAAoCAwRkZIqXqA5M0+ga0cy7c95jiANy+vuAmeLWNd/VEYUa2zpq7BDBknG8
@@ -239,10 +239,11 @@ TiE5WzfIewD9Hf5d95R54obyH+RlfUDyWIwRWdZ9ctumwlIAHXmM6YgA/186ZbEJAZxg9umRsgd0
 nQvv+dwKSIcUtWhytbiW1ykpuE8ESVwHgBMFK4EEAAoCAwTsvqcxGhIBS3KtIpAGYQQsrAaDAmWg
 86BPN6RrrR+9bVh9sOk5ljugKdyVdpbhYjB+GmQh2Udk35+INJskljtYiMEEGBMIAAkFAklcB4AC
 GwIAagkQEYEfTiE5WzdfIAQZEwgABgUCSVwHgAAKCRDOt/H8tcYNaAnOAP4yLY1/CYI7dfh0cByR
-jD7LO5OlfPiG4lsMDdRjn4t/uwEAvkHMtqCXjVpg11mXCRDFk2ZVIZSMvnV3gwIbucK0nEuJ1QD9
-EM3Yv/Knp3y2p77rUxn0CUWAbNjEs4IVCejOdQIu504BAOGINmi7D84lv9omgjoyKJLwpSI5b60p
-61E2qV8PbZGx
-=n8Zs
+jD7LO5OlfPiG4lsMDdRjn4t/uwD/Qb4zSV9ocqWfKKZo9u86a1RZu1IiiirEPNBC0w2BpPaJ1QD9
+EM3Yv/Knp3y2p77rUxn0CUWAbNjEs4IVCejOdQIu504A/R53yZdE8DHaQCXZfcXN12vKCbqtP5t2
+UG6btS3AyK+Q
+=hpas
 -----END PGP PUBLIC KEY BLOCK-----
-```
+````
+
 
