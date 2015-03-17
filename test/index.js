@@ -86,7 +86,8 @@ describe('bip44gpg', function() {
     
 	describe('compute_key_fingerprint', function()
 	{
-		var expect_keyid_hex = '11811f4e21395b37';
+		//var expect_keyid_hex = '11811f4e21395b37';
+		var expect_keyid_hex = '877ae179d37d11c1';
 		console.log('key id should be ' + expect_keyid_hex + '\n');
 		var fing = bip44gpg.compute_key_fingerprint(root_cert_key_packet).toString('hex');
 		assert.equal( expect_keyid_hex, fing );
