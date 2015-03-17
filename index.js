@@ -969,7 +969,7 @@ function create_wallet_gpg( root_hdnode, acct_no, s2kpassphrase )
 		wrap = "privkey";
 	}
 	acct_no = parseInt(acct_no);
-	var ck_node = root_hdnode.deriveHardened(44).deriveHardened(0).deriveHardened(acct_no).deriveHardened(6);
+	var ck_node = root_hdnode.deriveHardened(76).deriveHardened(0).deriveHardened(acct_no).deriveHardened(6);
 	var ck = new bitcoinjs.ECKey(ck_node.privKey.d, false);
 	var ek_node = ck_node.deriveHardened(0);
 	var ek = new bitcoinjs.ECKey(ek_node.privKey.d, false);
@@ -1025,7 +1025,7 @@ function start_create_wallet_gpg_from_mnem(
 	var byteshex = bip39.mnemonicToSeedHex(mnem, b39passphrase );
 	var root_hdnode = bitcoinjs.HDNode.fromSeedHex(  byteshex );	
 	
-	var ck_node = root_hdnode.deriveHardened(44).deriveHardened(0).deriveHardened(acct_no).deriveHardened(6);
+	var ck_node = root_hdnode.deriveHardened(76).deriveHardened(0).deriveHardened(acct_no).deriveHardened(6);
 	var ck = new bitcoinjs.ECKey(ck_node.privKey.d, false);
 	var ek_node = ck_node.deriveHardened(0);
 	var ek = new bitcoinjs.ECKey(ek_node.privKey.d, false);

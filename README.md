@@ -1,6 +1,8 @@
 
-Bip 44 extensions
+Bip 44 extensions 
 =================
+
+Proposed will use "76" as a mooted BIP number. No actual number has been assigned.
 
 ### Abstract
 
@@ -32,11 +34,15 @@ Bip44, specifically for bitcoin, currently defines the paths:
 * m/44h/0h/*account*h/0/*n* as external key *n*
 * m/44h/0h/*account*h/1/*n* as change key *n*
 
+This proposal uses a very similar structure, with 76h as the patyh root, 0h
+indicating bitcoin, followed by the account index then specific use extensions.
+
 ### Proposed Extensions
 
 * Printable Cash
 * Exportable Payment Books
 * Publishable Stealthcoin roots
+* Determinitistic X509 Certificates
 * Deterministic GPG keys
 
 ####  Printable Cash
@@ -96,7 +102,7 @@ hardened derived key in the external/change position, instead of a 0 or 1.
 Each cash note created by the wallet for account *acct* will have an ordinal number *ord*, starting from 0
 
 The wallet will create them using this path: 
-	44H/0H/*acct*H/2H/*ord*H
+	76H/0H/*acct*H/2H/*ord*H
 
 The wallet should track any coins that arrive in defined cash key ordinals.
 
@@ -107,7 +113,7 @@ The wallet should allow the user to designate the recipent and purpose of the pa
 also track any payments recieved into a payment book address.
 			
 The wallet will create them using this path: 
-	44H/0H/*acct*H/3H/*ord*H
+	76H/0H/*acct*H/3H/*ord*H
 
 #### Publishable Stealthcoin roots (4H)
 
@@ -116,7 +122,7 @@ ordinal number *ord*, starting from 0. The wallet should also track any
 payments recieved into stealth root using the stealth scheme's usual  mechanism
 
 The wallet will create them using this path: 
-	44H/0H/*acct*H/4H/*ord*H
+	76H/0H/*acct*H/4H/*ord*H
 
 #### Deterministic GPG keys (6H)
 
@@ -156,13 +162,13 @@ For a given HD wallet account *acct*, there will exist a single unique certifyin
 which will not be classified for creating signatures, nor as an encryption destination.
 
 The certifying key will be at this path for account *acct*:
-			44H/0H/*acct*H/6H
+			76H/0H/*acct*H/6H
 
 Each certifying key will have at least one encryption destination subkey, to be used for
 ECDH encryption and decryption. 
 
 The first encryption subkey will be at this path for account *acct*:
-			44H/0H/*acct*H/6H/0H
+			76H/0H/*acct*H/6H/0H
 
 Multiple encryption subkeys may be created, at any even hardened index after 0H
 
@@ -170,7 +176,7 @@ Each certifying key will have at least one signing subkey, to be used for
 ECDSA signatures. 
 
 The first signing subkey will be at this path for account *acct*:
-			44H/0H/*acct*H/6H/1H
+			76H/0H/*acct*H/6H/1H
 
 Multiple signing subkeys may be created, at any odd hardened index after 1H.
 
@@ -182,7 +188,7 @@ As required, all public keys will be uncompressed. Only when exporting ECDH keys
 will be 0x03010807, signifiying that sha256 with AES 128 is used for gpg KDF and key wrapping.
 
 the user id packet will use the first 5 words or the bip39 mnemonic encoded raw hash160 compressed address of 
-the cert key. AKA bip39mnemencode( RIPEMD( SHA256( compressed-pubkey-of(44H/0H/*acct*H/6H)) ) ).truncate(first 5)
+the cert key. AKA bip39mnemencode( RIPEMD( SHA256( compressed-pubkey-of(76H/0H/*acct*H/6H)) ) ).truncate(first 5)
 
 All secret key packets should use s2k. Any s2k method may be used. Method 3, "Iterated and Salted S2K", is recommended.
 
@@ -222,9 +228,9 @@ In the case of a sub-signing key packet, additionally
 * Mnemonic = 'runway smart water canyon illness system west sing woman once receive harsh'
 * No extra passphrase
 * Account number: 45
-* cert key is at m/44H/0H/45H/6H = KygjLd4fy6DLZh5QujADMNBMmdorKy39UXELzE6X8PtCMdtzhHDu 
-* encrypting subkey @ m/44h/0h/45h/6h/0h = Kzt9SMacQg4JneVnpaBWidogNJ6efy6gnXQYWN5iqcZrX6J6tGWd 
-* signing subkey @ m/44h/0h/45h/6h/1h = L5Lv3SP3XGgDVsvUWfnXbgHUPYT34UhPVbP497fKERdwHEYBN2gk
+* cert key is at m/76H/0H/45H/6H = KygjLd4fy6DLZh5QujADMNBMmdorKy39UXELzE6X8PtCMdtzhHDu 
+* encrypting subkey @ m/76h/0h/45h/6h/0h = Kzt9SMacQg4JneVnpaBWidogNJ6efy6gnXQYWN5iqcZrX6J6tGWd 
+* signing subkey @ m/76h/0h/45h/6h/1h = L5Lv3SP3XGgDVsvUWfnXbgHUPYT34UhPVbP497fKERdwHEYBN2gk
 
 ````
 -----BEGIN PGP PUBLIC KEY BLOCK-----

@@ -70,8 +70,8 @@ describe('bip44gpg', function() {
     describe('compute_key_packet', function()
 	{
 		//btckey1.privKey is an eckey
-		// /44h/0h/45h/6h
-		var derived_node = btckey1.deriveHardened(44).deriveHardened(0).deriveHardened(45).deriveHardened(6);
+		// /76h/0h/45h/6h
+		var derived_node = btckey1.deriveHardened(76).deriveHardened(0).deriveHardened(45).deriveHardened(6);
 		root_cert_key = new bitcoinjs.ECKey(derived_node.privKey.d, false);
 		root_cert_key_packet = bip44gpg.compute_key_packet( false, true, false, root_cert_key, "" );
 
@@ -92,7 +92,8 @@ describe('bip44gpg', function() {
 		assert.equal( expect_keyid_hex, fing );
 	})
 
-	var usernm = "faculty supreme other rebel protect";
+	//var usernm = "faculty supreme other rebel protect";
+	var usernm = "thunder comfort rose melt junk";
 	describe('get_id_name', function()
 	{
 		var compa = bip44gpg.get_id_name(root_cert_key);
@@ -121,8 +122,8 @@ describe('bip44gpg', function() {
     describe('compute_key_packet - subkey for encry', function()
 	{
 		//btckey1.privKey is an eckey
-		// /44h/0h/45h/6h/0h
-		var derived_node = btckey1.deriveHardened(44).deriveHardened(0).deriveHardened(45).deriveHardened(6).deriveHardened(0);
+		// /76h/0h/45h/6h/0h
+		var derived_node = btckey1.deriveHardened(76).deriveHardened(0).deriveHardened(45).deriveHardened(6).deriveHardened(0);
 		encrypting_subkey = new bitcoinjs.ECKey(derived_node.privKey.d, false);
 		encrypting_subkey_packet = bip44gpg.compute_key_packet( false, false, true, encrypting_subkey, "" );
 
@@ -142,8 +143,8 @@ describe('bip44gpg', function() {
     describe('compute_key_packet - subkey for singing', function()
 	{
 		//btckey1.privKey is an eckey
-		// /44h/0h/45h/6h/1h
-		var derived_node = btckey1.deriveHardened(44).deriveHardened(0).deriveHardened(45).deriveHardened(6).deriveHardened(1);
+		// /76h/0h/45h/6h/1h
+		var derived_node = btckey1.deriveHardened(76).deriveHardened(0).deriveHardened(45).deriveHardened(6).deriveHardened(1);
 		signing_subkey = new bitcoinjs.ECKey(derived_node.privKey.d, false);
 		signing_subkey_packet = bip44gpg.compute_key_packet( false, false, false, signing_subkey, "" );
 
@@ -161,21 +162,22 @@ describe('bip44gpg', function() {
 	var ascii_output_expected = 
 "-----BEGIN PGP PUBLIC KEY BLOCK-----\n"+
 "\n"+
-"mE8ESVwHgBMFK4EEAAoCAwRkZIqXqA5M0+ga0cy7c95jiANy+vuAmeLWNd/VEYUa2zpq7BDBknG8\n"+
-"JjnIotlm0wSIM5wfmdSfBC5WMSFTwy7FtCNmYWN1bHR5IHN1cHJlbWUgb3RoZXIgcmViZWwgcHJv\n"+
-"dGVjdIhxBBMTCAAZBQJJXAeAAhsBBAsJCAcFFQgJCgMEFgIDAQAKCRARgR9OITlbN0XMAQDUv6JC\n"+
-"Yz0Oh37PAXSbpylSrfngs/XBqfo0w7xF5W1vjgD/QKtyqNqFqfqn5WaPdjCDgXzBAWIgk0wPQmjq\n"+
-"+sWsgwW4UwRJXAeAEgUrgQQACgIDBMUHnrF7IyfX06q2L/nHI6cnTZM9TCTDsgcadYA2jh/HHkBj\n"+
-"2aV4+P/gKW+8w01RPLUd1H5P3novV2KrN/16OMMDAQgHiGEEGBMIAAkFAklcB4ACGwwACgkQEYEf\n"+
-"TiE5WzfIewD9Hf5d95R54obyH+RlfUDyWIwRWdZ9ctumwlIAHXmM6YgA/186ZbEJAZxg9umRsgd0\n"+
-"nQvv+dwKSIcUtWhytbiW1ykpuE8ESVwHgBMFK4EEAAoCAwTsvqcxGhIBS3KtIpAGYQQsrAaDAmWg\n"+
-"86BPN6RrrR+9bVh9sOk5ljugKdyVdpbhYjB+GmQh2Udk35+INJskljtYiMEEGBMIAAkFAklcB4AC\n"+
-"GwIAagkQEYEfTiE5WzdfIAQZEwgABgUCSVwHgAAKCRDOt/H8tcYNaAnOAP4yLY1/CYI7dfh0cByR\n"+
-"jD7LO5OlfPiG4lsMDdRjn4t/uwD/Qb4zSV9ocqWfKKZo9u86a1RZu1IiiirEPNBC0w2BpPaJ1QD9\n"+
-"EM3Yv/Knp3y2p77rUxn0CUWAbNjEs4IVCejOdQIu504A/R53yZdE8DHaQCXZfcXN12vKCbqtP5t2\n"+
-"UG6btS3AyK+Q\n"+
-"=hpas\n"+
-"-----END PGP PUBLIC KEY BLOCK-----\n" ;
+"mE8ESVwHgBMFK4EEAAoCAwSH+wplKKVyUhirzbn+ynb9wjfOMev5bgy//Q0Dp3+poz0984Uh53nV\n"+
+"p7gzae1BSfTluS6ta1SiuCN0F38Wl/KjtB50aHVuZGVyIGNvbWZvcnQgcm9zZSBtZWx0IGp1bmuI\n"+
+"cQQTEwgAGQUCSVwHgAIbAQQLCQgHBRUICQoDBBYCAwEACgkQh3rhedN9EcGPlAEA3bDPnm7PCZx5\n"+
+"RO5XQhmS301bJL5OcgxYApBX9TAIuzkA/j4a9FHZmSsaQbJ2/+dbQrkutChDAqwGdfQkhImpsLmA\n"+
+"uFMESVwHgBIFK4EEAAoCAwQukeiBAewvrkz183yhjPDViZpnAMLx0G4fjL6qvUNGNGwQlUrSVLJr\n"+
+"Pc/WIQLTguwW1DCeO7G14QcbOcQkF9D9AwEIB4hhBBgTCAAJBQJJXAeAAhsMAAoJEId64XnTfRHB\n"+
+"v/UBALzmsoLLXC++z+mX5dCgH4ASdwe4k3DJCCVxRUK6FI7XAP9QzVNl6aNmegVvseMopx+Y1XWG\n"+
+"LiX3pReeImYOZ5s9ubhPBElcB4ATBSuBBAAKAgMEa2CCbUIKFuL8OfaxqH/tHwUFEPZi5LAmha1s\n"+
+"/dXiJmmGFkc4uu95pOeg3/t2EyQ5uNY8pBs3cgPYDIxqFL7jeIjBBBgTCAAJBQJJXAeAAhsCAGoJ\n"+
+"EId64XnTfRHBXyAEGRMIAAYFAklcB4AACgkQv7LNwP3jxRge/QD7B6sxwe20eYwdaaCnyPhTCI6/\n"+
+"VtRkfyU2GKV0bHT+foIA/2euFvcW/pDLZv4S9RiaQD9GpfxgXT20mQ5F8l21vuTOR88A/R80u6GP\n"+
+"1s6C/NM+XgdxRcmr7J3zAP77JyrMHTfsqaAfAP45BgUhgBY7VEr5a+T3vBI5YBNP37qPu98LgvvS\n"+
+"98lXtg==\n"+
+"=qDbE\n"+
+"-----END PGP PUBLIC KEY BLOCK-----\n";
+
 	describe('bip44gpg.ascii_armor', function()
 	{
 		var combin = Buffer.concat( [
